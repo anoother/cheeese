@@ -26,11 +26,11 @@ Cheeese has no configuration and gets its schedule from command-line arguments.
 
 A sample routine could look like the following:
 
-```cheeese 30m3 h2 d5 w3 m5 y0 --cleanup=2d```
+```cheeese 30m3 h2 d5 w3 m5 y0 c2d tank -r```
 
 Run every 30 minutes (eg. via `cron`), this would translate to:
 
-Keep...
+Keep, for the `tank` filesystem:
 
 - **3** 30-minute-ly snapshots
 - **2** hourly snapshots\*
@@ -38,6 +38,7 @@ Keep...
 - **3** weekly snapshots
 - **5** monthly snapshots
 - **unlimited** yearly snapshots
+- Snapshots are recursive (options will be passed verbatim to the snapshot command?)
 - And clean up (remove unwanted snapshots) every 2 days.
 
 \* The `h2` is actually redundant here, as Cheeese's design means statements are deduplicated. Ergo, a definition for 3 30-minutely snapshots already covers 2 hourly snapshots (but no more).
